@@ -11,6 +11,9 @@ my %number_product_reviews;
 
 my %product_review_score;
 
+my %product_categories;
+&read_product_category();
+
 while (<>) {
 
     my @tokens = split, /\s+/;
@@ -73,11 +76,19 @@ for my $key (keys %product_first_review) {
 #    my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($total_time);
     #print $product_last_review{$key}, " ", $product_first_review{$key}, "\n";
 #
-    next if ($year2 > 2010);
+    next if ($year2 > 110);
     next if ($number_product_reviews{$key} < 50);
     #print "$key $diff_days\n" if ($diff_days != 0);
     my $average_score = $product_review_score{$key} / $number_product_reviews{$key};
-    print "$key $diff_days $average_score\n" if ($diff_days != 0);
+
+    # if ($diff_days == 6444) {
+    #     print scalar localtime($first_time), " ", scalar localtime($last_time), " $year1 $year2\n";
+    #     die;
+    # }
+    my $cats_str = "@{$product_categories{$key}}";
+    $cats_str =~ s/\s+/-/;
+
+    print "$key $diff_days $average_score $cats_str\n" if ($diff_days != 0);
 }
 
 sub calc_diff_days {
@@ -91,5 +102,15 @@ sub calc_diff_days {
     my $days2 = $year2 * 365 + $mon2 * 31 + $mday2;
 
     $days2 - $days1;
+}
+
+sub read_product_category() {
+    open my $FILE, "<../categories/product_categories3" or die;
+
+    while (<$FILE>) {
+        /(\S+)\s+(.*)/;
+        push @{$product_categories{$1}}, $2;
+    }
+    close $FILE;
 }
 

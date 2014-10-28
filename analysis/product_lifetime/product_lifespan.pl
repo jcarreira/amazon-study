@@ -73,7 +73,7 @@ for my $key (keys %product_first_review) {
     #print "$key $diff_days\n" if ($diff_days != 0);
 
     # I consider a product dead if no review happens for 3 years
-    next if ($year2 > 2010);
+    next if ($year2 > 110);
     next if ($number_product_reviews{$key} < 50);
 
     print "$diff_days\n" if ($diff_days != 0);
