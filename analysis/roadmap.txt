@@ -1,9 +1,0 @@
-Analysis todo:
-
--- Anomalies --
-
-1) duplicated reviews text
-2) more than one review from the same user in the same product
-
-3) For each product:
-
