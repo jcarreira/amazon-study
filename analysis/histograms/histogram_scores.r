@@ -1,8 +1,5 @@
 scores <- scan("scores")
 pdf("histogram_scores.pdf")
 
---mydata_hist <- hist(scores, plot=FALSE)
---plot(mydata_hist$counts, log="y")
-
-hist(scores)
+hist(scores,cex=0.3, cex.lab=1.3, cex.axis=1.3, cex.main=1.3, cex.sub=1.3)
 dev.off()

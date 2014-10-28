@@ -29,7 +29,8 @@ while (<>) {
     $reviews_per_user{$userId}++;
 }
 
-for my $key (keys %reviews_per_user) {
-    print $reviews_per_user{$key}, "\n";
+for my $user_id (keys %reviews_per_user) {
+    print $reviews_per_user{$user_id}, "\n";
+    die "$user_id" if $reviews_per_user{$user_id} > 10000;
 }
 
