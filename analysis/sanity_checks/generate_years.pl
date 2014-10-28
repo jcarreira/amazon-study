@@ -26,9 +26,9 @@ while (<>) {
     next if $time == -1;
 
     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($time);
-    print $year+1900, "\n";
+#    print $year+1900, "\n";
     #print scalar localtime($time);
 
-    die unless $year >= 95;
+    die unless $year >= 95 && $year <= 113;
 }
 
