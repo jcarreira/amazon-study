@@ -70,10 +70,10 @@ for my $key (keys %user_first_review) {
     #print "$key $diff_days\n" if ($diff_days != 0);
 
     # I consider a user dead if no review happens for 3 years
-    next if ($year2 > 2010);
+    next if ($year2 > 110);
     #next if ($user_product_reviews{$key} < 50);
 
-    print "$key $diff_days\n" if ($diff_days != 0);
+    print "$diff_days\n" if ($diff_days != 0);
 }
 
 sub calc_diff_days {
